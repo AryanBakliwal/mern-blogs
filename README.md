@@ -1,0 +1,1 @@
+# MERN Blogs React app
