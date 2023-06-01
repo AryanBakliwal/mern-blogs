@@ -8,18 +8,19 @@ const app = express();
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const multer  = require('multer')
-const uploadMiddleware = multer({ dest: 'uploads/' })
+require('dotenv').config();
+
 const fs = require('fs');
 
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: process.env.ORIGIN}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-mongoose.connect('mongodb+srv://aryanbakliwal:aryanbakliwal123@cluster0.hbnonqa.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(process.env.DATABASE);
 
 const salt = bcrypt.genSaltSync(10);
-const secret = 'gig32877bsan76uigngi2u632'
+const secret = process.env.SECRET;
 
 app.post('/register', async (req, res) => {
     const {name, email, username, password} = req.body;
@@ -66,6 +67,7 @@ app.post('/logout', (req,res) => {
     res.cookie('token', '').json('ok');
 })
 
+const uploadMiddleware = multer({ dest: 'uploads/' })
 app.post('/post', uploadMiddleware.single('file'), async (req,res) => {
     const {originalname,path} = req.file;
     const parts = originalname.split('.');
