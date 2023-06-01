@@ -2,14 +2,14 @@ import { format } from "date-fns";
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../UserContext";
-
+require('dotenv').config();
 
 export default function PostPage() {
   const [postInfo,setPostInfo] = useState(null);
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`, {
+    fetch(process.env.REACT_APP_SERVER+`post/${id}`, {
         method: 'GET',
         credentials: 'include'
     })
@@ -38,7 +38,7 @@ export default function PostPage() {
         </div>
       )}
       <div className="image">
-        <img src={`http://localhost:4000/${postInfo.cover}`} alt=""/>
+        <img src={process.env.REACT_APP_SERVER+`${postInfo.cover}`} alt=""/>
       </div>
       <div className="content" dangerouslySetInnerHTML={{__html:postInfo.content}} />
     </div>

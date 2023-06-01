@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Post from "../Post";
+require('dotenv').config();
 
 export default function HomePage() {
   const [posts,setPosts] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:4000/post').then(response => {
+    fetch(process.env.REACT_APP_SERVER+'post').then(response => {
       response.json().then(posts => {
         setPosts(posts);
       });

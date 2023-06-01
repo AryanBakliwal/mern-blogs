@@ -1,4 +1,5 @@
 import { useState } from "react";
+require('dotenv').config();
 
 export default function RegisterPage() {
 
@@ -10,7 +11,7 @@ export default function RegisterPage() {
 
     async function register(e) {
         e.preventDefault();
-        const response = await fetch("http://localhost:4000/register", {
+        const response = await fetch(process.env.REACT_APP_SERVER+"register", {
             method: 'POST',
             body: JSON.stringify({name, email, username, password}),
             headers: {'Content-Type': 'application/json'}

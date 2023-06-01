@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
+require('dotenv').config();
 
 export default function LoginPage() {
 
@@ -11,7 +12,7 @@ export default function LoginPage() {
 
     async function login(e) {
         e.preventDefault();
-        const response = await fetch("http://localhost:4000/login", {
+        const response = await fetch(process.env.REACT_APP_SERVER+"login", {
             method: 'POST',
             body: JSON.stringify({username, password}),
             headers: {'Content-Type': 'application/json'},
