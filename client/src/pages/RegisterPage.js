@@ -11,7 +11,7 @@ export default function RegisterPage() {
 
     async function register(e) {
         e.preventDefault();
-        const response = await fetch(process.env.REACT_APP_SERVER+"register", {
+        const response = await fetch('https://mern-blogs-api.onrender.com/register', {
             method: 'POST',
             body: JSON.stringify({name, email, username, password}),
             headers: {'Content-Type': 'application/json'}

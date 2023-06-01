@@ -9,7 +9,7 @@ export default function PostPage() {
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   useEffect(() => {
-    fetch(process.env.REACT_APP_SERVER+`post/${id}`, {
+    fetch(`https://mern-blogs-api.onrender.com/post/${id}`, {
         method: 'GET',
         credentials: 'include'
     })

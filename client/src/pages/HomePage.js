@@ -5,7 +5,7 @@ import Post from "../Post";
 export default function HomePage() {
   const [posts,setPosts] = useState([]);
   useEffect(() => {
-    fetch(process.env.REACT_APP_SERVER+'post').then(response => {
+    fetch('https://mern-blogs-api.onrender.com/post').then(response => {
       response.json().then(posts => {
         setPosts(posts);
       });

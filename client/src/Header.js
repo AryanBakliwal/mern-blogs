@@ -7,7 +7,7 @@ export default function Header() {
 
   const {setUserInfo, userInfo} = useContext(UserContext);
   useEffect(() => {
-    fetch(process.env.REACT_APP_SERVER+'profile', {
+    fetch('https://mern-blogs-api.onrender.com/profile', {
       credentials: 'include',
       method: 'GET',
       headers: {'Content-Type': 'application/json'}

@@ -12,15 +12,15 @@ require('dotenv').config();
 
 const fs = require('fs');
 
-app.use(cors({credentials: true, origin: process.env.ORIGIN}));
+app.use(cors({credentials: true, origin: 'https://mern-blogs-1fug.onrender.com'}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-mongoose.connect(process.env.DATABASE);
+mongoose.connect('mongodb+srv://aryanbakliwal:aryanbakliwal123@cluster0.hbnonqa.mongodb.net/?retryWrites=true&w=majority');
 
 const salt = bcrypt.genSaltSync(10);
-const secret = process.env.SECRET;
+const secret = 'gig32877bsan76uigngi2u632'
 
 app.post('/register', async (req, res) => {
     const {name, email, username, password} = req.body;
