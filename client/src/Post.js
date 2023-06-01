@@ -1,6 +1,5 @@
-import { format } from "date-fns";
+import { formatISO9075 } from "date-fns";
 import { Link } from "react-router-dom";
-
 
 export default function Post({_id,title,summary,cover,content,createdAt,author}) {
 
@@ -8,7 +7,7 @@ export default function Post({_id,title,summary,cover,content,createdAt,author})
     <div className="post">
       <div className="image">
         <Link to={`/post/${_id}`}>
-          <img src={'https://mern-blogs-api.onrender.com/'+cover} alt=""/>
+          <img src={ 'https://mern-blogs-api.onrender.com/'+cover } alt=""/>
         </Link>
       </div>
       <div className="texts">
@@ -17,7 +16,7 @@ export default function Post({_id,title,summary,cover,content,createdAt,author})
         </Link>
         <p className="info">
           <a className="author">{author.username}</a>
-          <time>{format(new Date(createdAt), 'MMM d, yyyy HH:mm')}</time>
+          <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
         <p className="summary">{summary}</p>
       </div>

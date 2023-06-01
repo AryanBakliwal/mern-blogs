@@ -1,18 +1,14 @@
-import { format } from "date-fns";
+import { formatISO9075 } from "date-fns";
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../UserContext";
-
 
 export default function PostPage() {
   const [postInfo,setPostInfo] = useState(null);
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   useEffect(() => {
-    fetch(`https://mern-blogs-api.onrender.com/post/${id}`, {
-        method: 'GET',
-        credentials: 'include'
-    })
+    fetch(`https://mern-blogs-api.onrender.com/post/${id}`)
       .then(response => {
         response.json().then(postInfo => {
           setPostInfo(postInfo);
@@ -25,7 +21,7 @@ export default function PostPage() {
   return (
     <div className="post-page">
       <h1>{postInfo.title}</h1>
-      <time>{format(new Date(postInfo.createdAt), 'MMM d, yyyy HH:mm')}</time>
+      <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
       <div className="author">by @{postInfo.author.username}</div>
       {userInfo.id === postInfo.author._id && (
         <div className="edit-row">
@@ -38,7 +34,7 @@ export default function PostPage() {
         </div>
       )}
       <div className="image">
-        <img src={process.env.REACT_APP_SERVER+`${postInfo.cover}`} alt=""/>
+        <img src={`http://localhost:4000/${postInfo.cover}`} alt=""/>
       </div>
       <div className="content" dangerouslySetInnerHTML={{__html:postInfo.content}} />
     </div>
