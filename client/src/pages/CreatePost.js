@@ -2,7 +2,7 @@ import { useState } from "react";
 import 'react-quill/dist/quill.snow.css';
 import { Navigate } from "react-router-dom";
 import Editor from "../Editor";
-require('dotenv').config();
+
 
 export default function CreatePost() {
   const [title,setTitle] = useState('');

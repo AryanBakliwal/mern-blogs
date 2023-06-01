@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
-require('dotenv').config();
+
 
 export default function LoginPage() {
 

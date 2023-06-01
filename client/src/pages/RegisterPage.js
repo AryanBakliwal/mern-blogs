@@ -1,5 +1,5 @@
 import { useState } from "react";
-require('dotenv').config();
+
 
 export default function RegisterPage() {
 

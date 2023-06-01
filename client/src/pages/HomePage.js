@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Post from "../Post";
-require('dotenv').config();
+
 
 export default function HomePage() {
   const [posts,setPosts] = useState([]);

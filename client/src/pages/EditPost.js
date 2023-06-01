@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Editor from "../Editor";
-require('dotenv').config();
+
 
 export default function EditPost() {
   const {id} = useParams();
