@@ -153,3 +153,24 @@ div.post-page a.edit-btn{
 a svg{
     height:20px;
 }
+
+.nav-btns {
+    font-size: 16px;
+    padding: 7px 15px;
+    border-radius: 30px;
+    background-color: #e412af;
+    color: #fff;
+    font-weight: 700;
+}
+.logo-div {
+    display: flex;
+    align-items: center;
+}
+.logo-div h2 {
+    margin: 0;
+    color: rgb(25, 63, 146);
+}
+.logo-div img {
+    margin: 0 10px 0 30px;
+    height: 36px;
+}
