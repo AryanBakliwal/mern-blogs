@@ -37,7 +37,7 @@ export default function Header() {
         {username && (
           <>
             <Link to="/create">Create new post</Link>
-            <button className="nav-btns" onClick={logout}>Logout ({username})</button>
+            <button className="nav-btns" onClick={logout}>Logout</button>
           </>
         )}
         {!username && (
